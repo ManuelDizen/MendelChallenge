@@ -1,4 +1,4 @@
-package com.example.transactionapi.tests;
+package com.example.transactionapi.unittests;
 
 import com.example.transactionapi.controllers.TransactionController;
 import com.example.transactionapi.services.TransactionServiceImpl;
@@ -11,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
