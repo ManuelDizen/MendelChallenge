@@ -53,24 +53,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     public void putTransaction(Long transaction_id, Double amount, String type, Long parent_id){
-        /*
-        Recibo transaccion con ID
-        1. Si existe, actualizo los campos y chequeo si cambió el tipo
-            1.1 Si no cambio el tipo, nada que hacer
-            1.2 Si cambio el tipo, tengo que:
-                1.2.1 Sacar de set anterior
-                    1.2.1.1 Si set queda vacio, borrar la entrada
-                1.2.2 Agregar a set nuevo
-                    1.2.2.1 Si set nuevo no existe, crearlo y agregarlo
-                    1.2.2.2 Si ya existe, simplemente agregar.
-
-         2. Si no existe, creo transaccion y agrego a mapa de transacciones
-            2.1 Si el tipo no existe, creo set y agrego
-            2.2 Si ya existe, simplemente agrego
-
-        Nota: Parent id puede ser null.
-
-         */
         if(transactionRepository.transactionExists(transaction_id)){
             Transaction transaction = transactionRepository.getById(transaction_id);
             if(!Objects.equals(transaction.getType(), type)){

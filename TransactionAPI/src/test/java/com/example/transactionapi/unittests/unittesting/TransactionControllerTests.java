@@ -59,7 +59,7 @@ class TransactionControllerTests {
 
 		mockMvc.perform(get("/transactions/types/shopping"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$", hasSize(2))) // Ensure there are 2 elements
+				.andExpect(jsonPath("$", hasSize(2)))
 				.andExpect(jsonPath("$", containsInAnyOrder(11, 12)));
 	}
 

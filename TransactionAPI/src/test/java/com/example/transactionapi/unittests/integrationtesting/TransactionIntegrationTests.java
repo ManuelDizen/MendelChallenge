@@ -18,27 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class TransactionIntegrationTests {
 
-    /*
-    Casos posibles:
-
-        - Para el PUT
-            - Crear transacción sin parent_id
-            - Crear transacción con parent_id
-            - Crear transacción con parent_id invalido
-        - Para el GET types
-            - Un type uqe no tenga ninguna trans
-            - Un type que existe
-        - Para el GET suma
-            - No existe ID de trans
-            - Suma con ciclo que termine bien
-            - Suma
-     */
-
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private TransactionService transactionService;
 
     @Autowired
     private TransactionRepository transactionRepository;
