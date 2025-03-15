@@ -1,7 +1,5 @@
-package com.example.transactionapi.tests;
+package com.example.transactionapi.unittests;
 
-import com.example.transactionapi.interfaces.TransactionRepository;
-import com.example.transactionapi.interfaces.TransactionService;
 import com.example.transactionapi.models.Transaction;
 
 import com.example.transactionapi.repositories.TransactionRepositoryImpl;
@@ -9,10 +7,8 @@ import com.example.transactionapi.services.TransactionServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,11 +16,11 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class TransactionServiceTests {
-        @InjectMocks
-        private TransactionServiceImpl transactionService;
+    @InjectMocks
+    private TransactionServiceImpl transactionService;
 
-        @Mock
-        private TransactionRepositoryImpl transactionRepository;
+    @Mock
+    private TransactionRepositoryImpl transactionRepository;
 
     @Test
     void shouldUpdateExistingTransactionWithoutTypeChange() {
