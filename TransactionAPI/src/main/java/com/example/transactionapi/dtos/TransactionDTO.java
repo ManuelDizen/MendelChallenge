@@ -2,12 +2,12 @@ package com.example.transactionapi.dtos;
 public class TransactionDTO {
     private double amount;
     private String type;
-    private Long parentId;
+    private Long parent_id;
 
-    public TransactionDTO(double amount, String type, Long parentId) {
+    public TransactionDTO(double amount, String type, Long parent_id) {
         this.amount = amount;
         this.type = type;
-        this.parentId = parentId;
+        this.parent_id = parent_id;
     }
 
     public double getAmount() {
@@ -26,11 +26,11 @@ public class TransactionDTO {
         this.type = type;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public Long getParent_id() {
+        return parent_id;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Long parent_id) {
+        this.parent_id = parent_id;
     }
 }

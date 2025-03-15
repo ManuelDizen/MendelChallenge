@@ -32,7 +32,7 @@ public class TransactionController {
     public ResponseEntity<?> putTransaction(@PathVariable Long transaction_id,
                                          @RequestBody TransactionDTO transaction){
         transactionService.putTransaction(transaction_id, transaction.getAmount(),
-                transaction.getType(), transaction.getParentId());
+                transaction.getType(), transaction.getParent_id());
         return ResponseEntity.ok("{\"status\": \"ok\"}");
     }
 
