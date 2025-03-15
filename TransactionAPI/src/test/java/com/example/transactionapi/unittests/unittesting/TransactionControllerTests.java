@@ -1,4 +1,4 @@
-package com.example.transactionapi.unittests;
+package com.example.transactionapi.unittests.unittesting;
 
 import com.example.transactionapi.controllers.TransactionController;
 import com.example.transactionapi.services.TransactionServiceImpl;
