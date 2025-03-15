@@ -2,6 +2,7 @@ package com.example.transactionapi.services;
 
 import com.example.transactionapi.interfaces.TransactionRepository;
 import com.example.transactionapi.interfaces.TransactionService;
+import com.example.transactionapi.interfaces.exceptions.NoSuchTransactionException;
 import com.example.transactionapi.models.Transaction;
 import com.example.transactionapi.repositories.TransactionRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     public Double getTransactionSumById(Long id) {
         if(!transactionRepository.transactionExists(id)){
-            return null;
+            throw new NoSuchTransactionException();
         }
 
         Stack<Long> toProcess = new Stack<>();
