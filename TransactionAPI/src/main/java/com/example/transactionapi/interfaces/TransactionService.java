@@ -4,7 +4,7 @@ import java.util.Set;
 
 public interface TransactionService {
 
-    public Double getTransactionSumById(Long id);
-    public Set<Long> getTransactionsByType(String type);
-    public void putTransaction(Long transaction_id, Double amount, String type, Long parent_id);
+    Double getTransactionSumById(Long id);
+    Set<Long> getTransactionsByType(String type);
+    void putTransaction(Long transaction_id, Double amount, String type, Long parent_id);
 }
