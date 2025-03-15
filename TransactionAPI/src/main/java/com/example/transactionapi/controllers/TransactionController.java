@@ -12,16 +12,16 @@ import java.util.Collections;
 @RequestMapping("/transactions")
 public class TransactionController {
 
-    private final TransactionServiceImpl transactionServiceImpl;
+    private final TransactionServiceImpl transactionService;
 
     @Autowired
-    public TransactionController(TransactionServiceImpl transactionServiceImpl){
-        this.transactionServiceImpl = transactionServiceImpl;
+    public TransactionController(TransactionServiceImpl transactionService){
+        this.transactionService = transactionService;
     }
 
     @GetMapping("/sum/{transaction_id}")
     public ResponseEntity<?> getTransactionSumById(@PathVariable Long transaction_id){
-        Double sum = transactionServiceImpl.getTransactionSumById(transaction_id);
+        Double sum = transactionService.getTransactionSumById(transaction_id);
         if(sum == null){
             return ResponseEntity.notFound().build();
         }
@@ -31,18 +31,18 @@ public class TransactionController {
     @PutMapping("/{transaction_id}")
     public ResponseEntity<?> putTransaction(@PathVariable Long transaction_id,
                                          @RequestBody TransactionDTO transaction){
-        transactionServiceImpl.putTransaction(transaction_id, transaction.getAmount(),
+        transactionService.putTransaction(transaction_id, transaction.getAmount(),
                 transaction.getType(), transaction.getParentId());
         return ResponseEntity.ok("{\"status\": \"ok\"}");
     }
 
     @GetMapping("/types/{type}")
     public ResponseEntity<?> getTransactionByType(@PathVariable String type){
-        return ResponseEntity.ok(transactionServiceImpl.getTransactionsByType(type));
+        return ResponseEntity.ok(transactionService.getTransactionsByType(type));
     }
 
     @GetMapping("/")
     public ResponseEntity<?> getAll(){
-        return ResponseEntity.ok(transactionServiceImpl.getAll());
+        return ResponseEntity.ok(transactionService.getAll());
     }
 }
