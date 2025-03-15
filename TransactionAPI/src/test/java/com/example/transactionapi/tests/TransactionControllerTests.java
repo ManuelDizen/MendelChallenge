@@ -1,7 +1,7 @@
-package com.example.transactionapi;
+package com.example.transactionapi.tests;
 
 import com.example.transactionapi.controllers.TransactionController;
-import com.example.transactionapi.services.TransactionService;
+import com.example.transactionapi.services.TransactionServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,7 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.List;
+import java.util.Set;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -20,10 +20,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-class TransactionApiApplicationTests {
+class TransactionControllerTests {
 
 	@Mock
-	private TransactionService transactionService;
+	private TransactionServiceImpl transactionServiceImpl;
 
 	@InjectMocks
 	private TransactionController transactionController;
@@ -53,7 +53,7 @@ class TransactionApiApplicationTests {
 
 	@Test
 	void shouldReturnTransactionsByType() throws Exception {
-		when(transactionService.getTransactionsByType("shopping")).thenReturn(List.of(11L, 12L));
+		when(transactionServiceImpl.getTransactionsByType("shopping")).thenReturn(Set.of(11L, 12L));
 
 		mockMvc.perform(get("/transactions/types/shopping"))
 				.andExpect(status().isOk())
@@ -63,7 +63,7 @@ class TransactionApiApplicationTests {
 
 	@Test
 	void shouldReturnTransactionSum() throws Exception {
-		when(transactionService.getTransactionSumById(10L)).thenReturn(20000.0);
+		when(transactionServiceImpl.getTransactionSumById(10L)).thenReturn(20000.0);
 
 		mockMvc.perform(get("/transactions/sum/10"))
 				.andExpect(status().isOk())
