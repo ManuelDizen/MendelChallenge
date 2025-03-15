@@ -6,11 +6,14 @@ import com.example.transactionapi.models.Transaction;
 
 import com.example.transactionapi.repositories.TransactionRepositoryImpl;
 import com.example.transactionapi.services.TransactionServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.List;
 import java.util.Set;
@@ -20,11 +23,11 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class TransactionServiceTests {
-        @InjectMocks
-        private TransactionServiceImpl transactionService;
+    @InjectMocks
+    private TransactionServiceImpl transactionService;
 
-        @Mock
-        private TransactionRepositoryImpl transactionRepository;
+    @Mock
+    private TransactionRepositoryImpl transactionRepository;
 
     @Test
     void shouldUpdateExistingTransactionWithoutTypeChange() {

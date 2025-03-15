@@ -11,8 +11,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.List;
 import java.util.Set;
 
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -57,8 +60,8 @@ class TransactionControllerTests {
 
 		mockMvc.perform(get("/transactions/types/shopping"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[0]").value(11))
-				.andExpect(jsonPath("$[1]").value(12));
+				.andExpect(jsonPath("$", hasSize(2))) // Ensure there are 2 elements
+				.andExpect(jsonPath("$", containsInAnyOrder(11, 12)));
 	}
 
 	@Test
