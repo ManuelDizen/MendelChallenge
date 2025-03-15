@@ -54,7 +54,19 @@ public class TransactionRepositoryImpl implements TransactionRepository {
         Transaction transaction = getById(transaction_id);
         transaction.setAmount(amount);
         transaction.setType(type);
-        transaction.setParent_id(parent_id); //TODO: Acá falta impactar en el nuevo parent como hijo
+        updateParents(transaction_id, transaction.getParent_id(), parent_id);
+        transaction.setParent_id(parent_id);
+    }
+
+    private void updateParents(Long transaction_id, Long oldParentId, Long newParentId) {
+        if (oldParentId != null) {
+            transactions.get(oldParentId).removeChildTransaction(transaction_id);
+        }
+        if(newParentId != null) addChildTransaction(transaction_id, newParentId);
+    }
+
+    private void addChildTransaction(Long transaction_id, Long parentId){
+        transactions.get(parentId).addChildTransaction(transaction_id);
     }
 
     @Override
